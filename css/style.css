@@ -24,3 +24,8 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.img-redes {
+  width: 24px;
+  margin-left: 1.5rem;
+}

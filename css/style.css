@@ -12,3 +12,15 @@
 .letra_validacion {
   font-size: 0.8rem;
 }
+
+.footer {
+  margin-top: auto;
+  background-color: aquamarine;
+  padding: 1.5rem;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

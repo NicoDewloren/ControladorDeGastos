@@ -43,7 +43,7 @@ function dibujarGastos() {
 
 
     if (gastosAcumulados.length == 0) {
-        contenido = `<p class="alert alert-danger text-center" role="alert">No tienes ningun gasto cargado!</p>`
+        contenido = `<p class="alert alert-danger text-center mt-5" role="alert">No tienes ningun gasto cargado!</p>`
     }
     else if (gastosAcumulados.length >= 1) {
 
@@ -54,15 +54,16 @@ function dibujarGastos() {
             <tr class="row">
             <td class="col-md-6 align-middle">${gasto.gasto}</td>       
             <td class="col-md-6 align-middle"><b>$${gasto.monto}</b></td>           
-            </tr>`
+            </tr>
+            </table>`
             total += gasto.monto
+
         }
+
         contenido += `<p class="text-center bg-warning py-2"> El total gastado en el mes es : <b>$${total}</b>`
         contenido += `<p class="text-end"><a href="#" class="btn btn-danger text-white" onclick="limpiarGastos()"  title="Limpiar gastos">Limpiar gastos</p>`
 
-
     }
-
 
     resultado.innerHTML = contenido
 }

@@ -1,0 +1,14 @@
+.titulo {
+  border-radius: 50px;
+  margin-top: 3rem;
+  background-color: aquamarine;
+  padding: 1rem;
+}
+
+.formulario {
+  margin-top: 3rem;
+}
+
+.letra_validacion {
+  font-size: 0.8rem;
+}

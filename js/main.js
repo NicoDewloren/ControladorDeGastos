@@ -7,6 +7,15 @@ function validarGastos() {
 
     let gasto = document.getElementById("gasto").value;
     let monto = document.getElementById("monto").value;
+    let fecha = document.getElementById("fecha").value;
+
+    if (fecha == "" || fecha == null) {
+        document.getElementById("error_gasto").className = "letra-validacion text-danger"
+        document.getElementById("error_gasto").innerText = "Ingresa la fecha del gasto"
+        return false
+    } else {
+        document.getElementById("error_gasto").innerText = ""
+    }
 
 
     if (gasto == "" || gasto == null) {
@@ -16,6 +25,7 @@ function validarGastos() {
     } else {
         document.getElementById("error_gasto").innerText = ""
     }
+
 
     if (monto == "" || monto == null) {
         document.getElementById("error_monto").className = "letra-validacion text-danger"
@@ -27,7 +37,7 @@ function validarGastos() {
 
     monto = parseFloat(monto)
 
-    const gastos = { "gasto": gasto, "monto": monto };
+    const gastos = { "gasto": gasto, "monto": monto, "fecha": fecha };
     gastosObtenidos.push(gastos);
 
 
@@ -54,8 +64,9 @@ function dibujarGastos() {
         for (gasto of gastosAcumulados) {
             contenido += `<table class="table text-center">
             <tr class="row">
-            <td class="col-md-6 align-middle">${gasto.gasto}</td>       
-            <td class="col-md-6 align-middle"><b>$${gasto.monto}</b></td>           
+            <td class="col-md-4 align-middle">${gasto.fecha}</td> 
+            <td class="col-md-4 align-middle">${gasto.gasto}</td>       
+            <td class="col-md-4 align-middle"><b>$${gasto.monto}</b></td>           
             </tr>
             </table>`
             total += gasto.monto

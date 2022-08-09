@@ -6,7 +6,7 @@ function validarGastos() {
     let gastosObtenidos = obtenerGastosLS();
 
     let gasto = document.getElementById("gasto").value;
-    let monto = parseFloat(document.getElementById("monto").value);
+    let monto = document.getElementById("monto").value;
 
 
     if (gasto == "" || gasto == null) {
@@ -19,11 +19,13 @@ function validarGastos() {
 
     if (monto == "" || monto == null) {
         document.getElementById("error_monto").className = "letra-validacion text-danger"
-        document.getElementById("error_monto").innerText = "Ingresa el nombre del gasto"
+        document.getElementById("error_monto").innerText = "Ingresa el monto del gasto"
         return false
     } else {
         document.getElementById("error_monto").innerText = ""
     }
+
+    monto = parseFloat(monto)
 
     const gastos = { "gasto": gasto, "monto": monto };
     gastosObtenidos.push(gastos);
@@ -59,7 +61,7 @@ function dibujarGastos() {
             total += gasto.monto
 
         }
-
+        console.log(monto)
         contenido += `<p class="text-center bg-warning py-2"> El total gastado en el mes es : <b>$${total}</b>`
         contenido += `<p class="text-end"><a href="#" class="btn btn-danger text-white" onclick="limpiarGastos()"  title="Limpiar gastos">Limpiar gastos</p>`
 

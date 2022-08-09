@@ -10,11 +10,11 @@ function validarGastos() {
     let fecha = document.getElementById("fecha").value;
 
     if (fecha == "" || fecha == null) {
-        document.getElementById("error_gasto").className = "letra-validacion text-danger"
-        document.getElementById("error_gasto").innerText = "Ingresa la fecha del gasto"
+        document.getElementById("error_fecha").className = "letra-validacion text-danger"
+        document.getElementById("error_fecha").innerText = "Ingresa la fecha del gasto"
         return false
     } else {
-        document.getElementById("error_gasto").innerText = ""
+        document.getElementById("error_fecha").innerText = ""
     }
 
 

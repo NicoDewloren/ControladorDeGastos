@@ -37,7 +37,7 @@
                 <div id="error_fecha"></div>
               </div>
               <div class="mb-3">
-                <label for="gasto" class="form-label"
+                <label for="gasto" class="form-label" 
                   ><b>Gasto</b></label
                 >
                 <input
@@ -52,6 +52,7 @@
                 <label
                   for="monto"
                   class="form-label"
+                  
                   ><b>Monto</b></label
                 >
                 <input
@@ -59,6 +60,7 @@
                   class="form-control"
                   id="monto"
                   placeholder="Monto"
+                  onkeypress="isInputNumber(event)"
                 />
                 <div id="error_monto"></div>
               </div>

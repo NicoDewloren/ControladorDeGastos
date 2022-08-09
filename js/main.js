@@ -47,6 +47,14 @@ function validarGastos() {
 }
 
 
+function isInputNumber(evt) {
+    let char = String.fromCharCode(evt.which);
+
+    if (!(/[0-9]/).test(char)) {
+        evt.preventDefault()
+    }
+}
+
 function dibujarGastos() {
 
     gastosAcumulados = obtenerGastosLS();
@@ -72,7 +80,7 @@ function dibujarGastos() {
             total += gasto.monto
 
         }
-        console.log(monto)
+
         contenido += `<p class="text-center bg-warning py-2"> El total gastado en el mes es : <b>$${total}</b>`
         contenido += `<p class="text-end"><a href="#" class="btn btn-danger text-white" onclick="limpiarGastos()"  title="Limpiar gastos">Limpiar gastos</p>`
 

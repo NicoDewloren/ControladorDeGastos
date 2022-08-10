@@ -11,7 +11,7 @@ function validarGastos() {
 
     if (fecha == "" || fecha == null) {
         document.getElementById("error_fecha").className = "letra-validacion text-danger"
-        document.getElementById("error_fecha").innerText = "Ingresa la fecha del gasto"
+        document.getElementById("error_fecha").innerText = "Ingresa el dia/fecha del gasto"
         return false
     } else {
         document.getElementById("error_fecha").innerText = ""
@@ -42,6 +42,7 @@ function validarGastos() {
 
 
     guardarGastosEnLS(gastosObtenidos);
+    agregarGastoID();
     dibujarGastos();
     limpiarFormulario();
 }
@@ -70,11 +71,14 @@ function dibujarGastos() {
         let total = 0;
 
         for (gasto of gastosAcumulados) {
+
+
             contenido += `<table class="table text-center">
             <tr class="row">
-            <td class="col-md-4 align-middle">${gasto.fecha}</td> 
-            <td class="col-md-4 align-middle">${gasto.gasto}</td>       
-            <td class="col-md-4 align-middle"><b>$${gasto.monto}</b></td>           
+            <td class="col-md-3 align-middle">${gasto.fecha}</td> 
+            <td class="col-md-3 align-middle">${gasto.gasto}</td>       
+            <td class="col-md-3 align-middle"><b>$${gasto.monto}</b></td>           
+            <td class="col-md-3 align-middle"><b><input type="button" class="btn btn-danger" value="Eliminar gasto" onclick="eliminarGastoIndividual(${gasto.id})"></b></td>           
             </tr>
             </table>`
             total += gasto.monto
@@ -82,7 +86,7 @@ function dibujarGastos() {
         }
 
         contenido += `<p class="text-center bg-warning py-2"> El total gastado en el mes es : <b>$${total}</b>`
-        contenido += `<p class="text-end"><a href="#" class="btn btn-danger text-white" onclick="limpiarGastos()"  title="Limpiar gastos">Limpiar gastos</p>`
+        contenido += `<p class="text-center"><a href="#" class="btn btn-danger text-white" onclick="limpiarGastos()"  title="Limpiar gastos">Limpiar gastos</p>`
 
     }
 
@@ -97,6 +101,22 @@ function limpiarFormulario() {
     formulario.reset();
 }
 
+
+function eliminarGastoIndividual(id) {
+
+    let gastosEnLS = obtenerGastosLS();
+    let gastoEnLS = gastosEnLS.findIndex(x => x.id == id);
+
+
+    if (gastosEnLS[gastoEnLS].id == id) {
+        gastosEnLS.splice(gastoEnLS, 1);
+    }
+
+
+    guardarGastosEnLS(gastosEnLS);
+    dibujarGastos();
+
+}
 
 // Funciones de LS 
 
@@ -117,13 +137,30 @@ function limpiarGastos() {
 
 }
 
+function agregarGastoID() {
+
+    let gastos = obtenerGastosLS();
+    let gastoID = 1
+
+    for (x of gastos) {
+
+        x.id = gastoID++
+    }
+    console.log(gastos)
+}
+
 // Eventos 
 
 document.getElementById("botonEnviar").addEventListener("click", validarGastos);
 
 // Ejecucion
 
+
 dibujarGastos();
+
+/// Prueba de cosas
+
+
 
 
 

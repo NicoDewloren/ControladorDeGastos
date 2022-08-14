@@ -146,7 +146,8 @@ function agregarGastoID() {
 
         x.id = gastoID++
     }
-    console.log(gastos)
+
+    guardarGastosEnLS(gastos)
 }
 
 // Eventos 
